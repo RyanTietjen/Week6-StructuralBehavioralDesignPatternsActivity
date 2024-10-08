@@ -22,18 +22,26 @@ export abstract class AbstractCalculatorState implements ICalculatorState {
   }
 
   protected add(firstNumber: number, secondNumber: number): number {
-    return (firstNumber + secondNumber);
+    const result = firstNumber + secondNumber
+    this._context.notify(`${firstNumber} + ${secondNumber} = ${result}`)
+    return (result);
   }
 
   protected subtract(firstNumber: number, secondNumber: number): number {
-    return (firstNumber - secondNumber);
+    const result = firstNumber - secondNumber
+    this._context.notify(`${firstNumber} - ${secondNumber} = ${result}`)
+    return (result);
   }
 
   protected multiply(firstNumber: number, secondNumber: number): number {
-    return (firstNumber * secondNumber);
+    const result = firstNumber * secondNumber
+    this._context.notify(`${firstNumber} * ${secondNumber} = ${result}`)
+    return (result);
   }
 
   protected divide(firstNumber: number, secondNumber: number): number {
-    return (firstNumber / secondNumber);
+    const result = firstNumber / secondNumber
+    this._context.notify(`${firstNumber} / ${secondNumber} = ${result}`)
+    return (result);
   }
 }

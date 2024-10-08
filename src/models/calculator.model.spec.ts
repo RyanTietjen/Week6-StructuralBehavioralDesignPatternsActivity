@@ -5,6 +5,8 @@ import { NumericKeys } from '../enums/numeric-keys.enum';
 import { OperatorKeys } from '../enums/operator-keys.enum';
 import { ActionKeys } from '../enums/action-keys.enum';
 import { assert } from 'console';
+import { ICalculatorObserver } from '../interfaces/calculator-observer.interface';
+import { CalculatorObserver } from './calculator.observer';
 
 describe('CalculatorModel', (): void => {
 
@@ -112,6 +114,12 @@ describe('CalculatorModel', (): void => {
   });
 
   it('should display `82` when equals is clicked on `100 + 1 - 8 * 1 * 3 / 4 + 7 - 10 / 2 * 4', (): void => {
+    const observer = new CalculatorObserver();
+
+    calculator = new CalculatorModel();
+    calculator.attach(observer);
+    calculator.detach(observer);
+
 
     calculator.pressNumericKey(NumericKeys.ONE);
     assert(calculator.display() === '1');
